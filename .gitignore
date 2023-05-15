@@ -1,0 +1,4 @@
+# .gitignore the following folders and files
+
+*DS_Store
+*node_modules
