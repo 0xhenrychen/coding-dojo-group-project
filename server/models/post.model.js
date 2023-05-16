@@ -1,6 +1,6 @@
+// 05-15 - Henry - Post schema has been created with just 2 basic inputs (postCaption and postType). Still need to incorporate postImage (uploading an image) and possibly other inputs/fields.
+
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const {isEmail} = require('validator');
 
 const PostSchema = new mongoose.Schema(
     {
@@ -12,39 +12,15 @@ const PostSchema = new mongoose.Schema(
         postType: {
             type: String,
             required: [true, 'Type of post is required.']
-        },
-        postImage: {
-            type: String,
-            validate: [isEmail, 'Invalid email.']
         }
+        // postImage: {
+        //     type: String,
+        //     validate: [isEmail, 'Invalid email.']
+        // }
     },
     {
         timestamps: true
     }
 )
-
-// Middleware. Temporarily adds a field, i.e. confirm password, to the schema when the user is registering (not stored in the database).
-UserSchema.virtual('confirmPassword')
-    .get(() => this.confirmPassword)
-    .set((value) => this.confirmPassword = value)
-
-    // Pre function runs before data is saved to the database.
-UserSchema.pre('validate', function(next) {
-    if(this.password !== this.confirmPassword){
-        this.invalidate('confirmPassword', `Passwords don't match.`)
-    }
-    // If the previous if statement is true, then run the "next" function, which is usually entering the data into the database.
-    next();
-}
-)
-
-// PostSchema.pre('save', function(next){
-//     bcrypt.hash(this.password, 10)
-//         .then(hash => {
-//             this.password = hash;
-//             next();
-//         });
-// }
-// )
 
 module.exports = mongoose.model('Post', PostSchema)

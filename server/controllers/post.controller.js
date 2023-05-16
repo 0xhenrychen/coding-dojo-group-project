@@ -1,6 +1,7 @@
+// 05-15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
+
 const Post = require('../models/post.model')
 
-// ! One way to code the CRUD methods (from Caden and Brendan):
 module.exports = {
     findAllPosts: (req, res) => {
         Post.find()
