@@ -1,3 +1,6 @@
+// 05-15 - Henry - All routes are working (tested them out in Postman).
+// 05-15 - Henry - Adding a test comment to test out the git features for a group project.
+
 const postController = require('../controllers/post.controller');
 
 module.exports = (app) => {
