@@ -24,7 +24,6 @@ module.exports = {
     },
 
     findOnePost: (req, res) => {
-        console.log(req.params);
         Post.findOne({_id: req.params.id})
             .then((onePost) => {
                 res.status(200).json(onePost)

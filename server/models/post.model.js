@@ -12,6 +12,9 @@ const PostSchema = new mongoose.Schema(
         postType: {
             type: String,
             required: [true, 'Type of post is required.']
+        },
+        postRecommend: {
+            type: Boolean
         }
         // postImage: {
         //     type: String,
