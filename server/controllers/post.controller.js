@@ -1,4 +1,4 @@
-// 05-15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
+// 5/15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
 
 const Post = require('../models/post.model')
 
