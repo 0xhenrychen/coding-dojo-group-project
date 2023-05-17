@@ -1,4 +1,4 @@
-// 05-15 - Henry - Post schema has been created with just 2 basic inputs (postCaption and postType). Still need to incorporate postImage (uploading an image) and possibly other inputs/fields.
+// 5/15 - Henry - Post schema has been created with just 3 basic inputs (postCaption, postType, and an optional postRecommend that I added). Still need to incorporate postImage (uploading an image) and possibly other inputs/fields.
 
 const mongoose = require('mongoose');
 
@@ -12,6 +12,9 @@ const PostSchema = new mongoose.Schema(
         postType: {
             type: String,
             required: [true, 'Type of post is required.']
+        },
+        postRecommend: {
+            type: Boolean
         }
         // postImage: {
         //     type: String,

@@ -1,4 +1,4 @@
-// 05-15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
+// 5/15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
 
 const Post = require('../models/post.model')
 
@@ -24,7 +24,6 @@ module.exports = {
     },
 
     findOnePost: (req, res) => {
-        console.log(req.params);
         Post.findOne({_id: req.params.id})
             .then((onePost) => {
                 res.status(200).json(onePost)
