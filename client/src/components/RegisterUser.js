@@ -6,19 +6,26 @@ import {useNavigate, Link} from 'react-router-dom';
 
 const RegisterUser = (props) => {
     const navigate = useNavigate()
+    const [selectedImage, setSelectedImage] = useState(null);
     
     const [user, setUser] = useState({
             firstName: "",
             lastName: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            image: null
         })
 
     const [errors, setErrors] = useState({})
     
     const changeHandler = (e) => {
         setUser({...user, [e.target.name]: e.target.value})
+    }
+
+    const imgHandler = (e) => {
+        const imgSrc = URL.createObjectURL(e.target.files[0]);
+        setUser({...user, [e.target.name]: imgSrc});
     }
 
     const submitHandler = (e) => {
@@ -88,6 +95,24 @@ const RegisterUser = (props) => {
                         <input type = "submit" value = "Create Account" />
                     </div>
                 </div>
+                <div>
+                        {selectedImage && (
+                            <div>
+                            <img
+                                alt="not found"
+                                width={"250px"}
+                                src={URL.createObjectURL(selectedImage)}
+                            />
+                            <br />
+                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={imgHandler}
+                        />
+                        </div>
             </form>
             <p>Already have an account? <Link to={'/'}>Log in</Link></p>
         </div>
