@@ -15,11 +15,10 @@ const PostSchema = new mongoose.Schema(
         },
         postRecommend: {
             type: Boolean
+        },
+        image: {
+            type: String,
         }
-        // postImage: {
-        //     type: String,
-        //     validate: [isEmail, 'Invalid email.']
-        // }
     },
     {
         timestamps: true

@@ -10,10 +10,12 @@ const CreatePost = (props) => {
     const [post, setPost] = useState({
             postCaption: "",
             postType: "",
-            postRecommend: false
+            postRecommend: false,
+            image: null
         })
 
     const [errors, setErrors] = useState({})
+    const [selectedImage, setSelectedImage] = useState(null);
     
     const changeHandler = (e) => {
         if(e.target.name === "postRecommend") {
@@ -24,12 +26,17 @@ const CreatePost = (props) => {
         }
     }
 
+    const imgHandler = (e) => {
+        const imgSrc = URL.createObjectURL(e.target.files[0]);
+        setPost({...post, [e.target.name]: imgSrc});
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/newpost', post)
             .then((res) => {
                 console.log(res);
-                navigate('/posts/all');
+                navigate('/home');
             })
             .catch((err) => {
                 console.log(err.response.data.errors);
@@ -82,7 +89,22 @@ const CreatePost = (props) => {
                             }
                         </div>
                         <div>
-                            <p>Need to add upload image feature later.</p>
+                        {selectedImage && (
+                            <div>
+                            <img
+                                alt="not found"
+                                width={"250px"}
+                                src={URL.createObjectURL(selectedImage)}
+                            />
+                            <br />
+                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={imgHandler}
+                        />
                         </div>
                         <div>
                             <label>Recommend this activity?</label>

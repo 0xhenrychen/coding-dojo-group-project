@@ -32,21 +32,18 @@ const DisplayAllPosts = (props) => {
     return (
         <div>
             <div>
-                <p><Link to="/posts/all">Home</Link> <Link to='/post/new'>New post</Link> <Link onClick={logout}>Logout</Link></p>
-            </div>
-            <div>
                 {
                     allPosts.map((post) => (
                             <div key={post._id} className="container_posts">
                                 <p>Caption: {post.postCaption}</p>
                                 <p>Type of activity: {post.postType}</p>
-                                <span>(Need to implement) Image upload?</span>
+
                                 {
                                     post.image?
-                                    <span> If yes, then show photo here.</span>:
+                                    <img src={post.image} style={{width: "100px"}}/>:
                                     <span> If no, then don't show anything here.</span>
                                 }
-                                <p><Link to = {`/posts/details/${post._id}`}>Details</Link> | <Link to = {`/posts/edit/${post._id}`}>Edit</Link></p>
+                                <p><Link to = {`/posts/${post._id}`}>Details</Link> | <Link to = {`/posts/edit/${post._id}`}>Edit</Link></p>
                                 <p>(Need to implement) Number of likes | Leave a comment</p>
                             </div>
                     ))
