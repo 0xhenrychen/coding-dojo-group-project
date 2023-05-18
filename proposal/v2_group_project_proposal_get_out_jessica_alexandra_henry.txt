@@ -12,7 +12,7 @@ Stack: JavaScript/MERN
 
 Title: Get Out
 
-GitHub repo link (temporary placeholder): https://github.com/0xhenrychen/coding-dojo-group-project
+GitHub repo link: https://github.com/0xhenrychen/coding-dojo-group-project
 
 Project name: Get Out Outdoors Social Media Website
 

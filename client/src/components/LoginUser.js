@@ -23,7 +23,7 @@ const LoginUser = (props) => {
         axios.post('http://localhost:8000/api/login', user, {withCredentials: true})
             .then((res) => {
                 console.log(res);
-                navigate('/posts/all');
+                navigate('/home');
             })
             .catch((err) => {
                 console.log(err);
