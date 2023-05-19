@@ -44,21 +44,8 @@ const CreatePost = (props) => {
             })
     }
 
-    const logout = () => {
-        axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-            .then((res) => {
-                navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
     return (
         <div>
-            <div>
-                <p><Link to="/posts/all">Home</Link> <Link to='/post/new'>New post</Link> <Link onClick={logout}>Logout</Link></p>
-            </div>
             <div>
                 <form onSubmit = {submitHandler}>
                     <div>

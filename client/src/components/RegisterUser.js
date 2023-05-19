@@ -11,6 +11,7 @@ const RegisterUser = (props) => {
     const [user, setUser] = useState({
             firstName: "",
             lastName: "",
+            username: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -33,7 +34,7 @@ const RegisterUser = (props) => {
         axios.post('http://localhost:8000/api/register', user, {withCredentials: true})
             .then((res) => {
                 console.log(res);
-                navigate('/');
+                navigate('/home');
             })
             .catch((err) => {
                 console.log(err);
@@ -65,6 +66,15 @@ const RegisterUser = (props) => {
                         }
                     </div>
                     <div>
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" name = "username" onChange = {changeHandler} value = {user.username} />
+                        {
+                            errors.username ?
+                            <p className = "text-danger">{errors.username.message}</p> :
+                            null
+                        }
+                    </div>
+                    <div>
                         <label htmlFor="email">Email:</label>
                         <input type="email" name = "email" onChange = {changeHandler} value = {user.email} />
                         {
@@ -91,11 +101,8 @@ const RegisterUser = (props) => {
                             null
                         }
                     </div>
-                    <div>
-                        <input type = "submit" value = "Create Account" />
-                    </div>
-                </div>
                 <div>
+                <label htmlFor="image">Profile Picture:</label>
                         {selectedImage && (
                             <div>
                             <img
@@ -113,6 +120,10 @@ const RegisterUser = (props) => {
                             onChange={imgHandler}
                         />
                         </div>
+                    <div>
+                        <input type = "submit" value = "Create Account" />
+                    </div>
+                </div>
             </form>
             <p>Already have an account? <Link to={'/'}>Log in</Link></p>
         </div>

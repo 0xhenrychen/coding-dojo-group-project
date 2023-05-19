@@ -7,48 +7,58 @@ import {Link, useNavigate} from 'react-router-dom';
 const DisplayAllPosts = (props) => {
     const navigate = useNavigate()
     const [allPosts, setAllPosts] = useState([])
+    const [filteredPosts, setFilteredPosts] = useState([])
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/allposts')
             .then((response) => {
             console.log(response);
             setAllPosts(response.data)
+            setFilteredPosts(response.data)
             })
             .catch((error) => {
                 console.log(error);
             }) 
     }, [])
 
-    const logout = () => {
-        axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-            .then((res) => {
-                navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+    const filterPosts = (e) => {
+        if(e.target.value === ""){
+            setFilteredPosts(allPosts);
+        } else {
+        setFilteredPosts(allPosts.filter(post => post.postType === e.target.value));
+        }
     }
     
     return (
         <div>
-            <div>
+            <div style={{height: "65vh", overflow: "auto"}}>
+                <label htmlFor="filter">Filter Posts:</label>
+                <select name="filter" onChange = {filterPosts}>
+                    <option value="">-- Select One --</option>
+                    <option value="Hiking">Hiking</option>
+                    <option value="Camping">Camping</option>
+                    <option value="Backpacking">Backpacking</option>
+                    <option value="Running">Running</option>
+                    <option value="Biking">Biking</option>
+                    <option value="Other">Other</option>
+                </select>
                 {
-                    allPosts.map((post) => (
+                    filteredPosts.map((post) => (
                             <div key={post._id} className="container_posts">
-                                <p>Caption: {post.postCaption}</p>
-                                <p>Type of activity: {post.postType}</p>
-
                                 {
                                     post.image?
                                     <img src={post.image} style={{width: "100px"}}/>:
-                                    <span> If no, then don't show anything here.</span>
+                                    null
                                 }
+                                <p>{post.postCaption}</p>
+                                <p>Type of activity: {post.postType}</p>
                                 <p><Link to = {`/posts/${post._id}`}>Details</Link> | <Link to = {`/posts/edit/${post._id}`}>Edit</Link></p>
                                 <p>(Need to implement) Number of likes | Leave a comment</p>
                             </div>
                     ))
                 }
             </div>
+            <Link to={'/post/new'}>+ Create new post</Link>
         </div>
     );
 }
