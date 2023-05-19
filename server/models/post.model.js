@@ -6,8 +6,8 @@ const PostSchema = new mongoose.Schema(
     {
         postCaption: {
             type: String,
-            required: [true, 'Post caption is required.'],
-            minLength: [8, 'Post caption must be at least 10 characters.']
+            required: [true, 'Post caption is required.']
+            // minLength: [8, 'Post caption must be at least 8 characters.']
         },
         postType: {
             type: String,
@@ -15,6 +15,10 @@ const PostSchema = new mongoose.Schema(
         },
         postRecommend: {
             type: Boolean
+        },
+        user_id:
+        {
+            type: mongoose.Types.ObjectId
         }
         // postImage: {
         //     type: String,

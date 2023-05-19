@@ -41,6 +41,7 @@ module.exports = {
                 res.status(201).cookie('userToken', userToken, {httpOnly: true, maxAge: 2*60*60*1000}).json(newUser)
             }
         }
+
         catch(err){
             res.status(400).json(
                 {
@@ -103,5 +104,15 @@ module.exports = {
                 message: `You've logged out.`
             }
         )
+    },
+
+    findOneUser: (req, res) => {
+        User.findOne({_id: req.params.user_id})
+            .then((oneUser) => {
+                res.status(200).json(oneUser)
+            })
+            .catch((err) => {
+                res.status(400).json(err)
+            });
     }
 }
