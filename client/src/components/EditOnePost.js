@@ -15,9 +15,15 @@ const EditOnePost = (props) => {
     })
 
     const [errors, setErrors] = useState({})
+    const [selectedImage, setSelectedImage] = useState(null);
     
     const changeHandler = (e) => {
         setPost({...post, [e.target.name]:e.target.value})
+    }
+
+    const imgHandler = (e) => {
+        const imgSrc = URL.createObjectURL(e.target.files[0]);
+        setPost({...post, [e.target.name]: imgSrc});
     }
 
     useEffect(() => {
@@ -36,7 +42,7 @@ const EditOnePost = (props) => {
         axios.put(`http://localhost:8000/api/updatepost/${id}`, post)
             .then((res) => {
                 console.log(res); 
-                navigate('/');
+                navigate('/home');
             })
             .catch((err) => {
                 console.log(err.response.data.errors);
@@ -44,21 +50,8 @@ const EditOnePost = (props) => {
             })
     }
 
-    const logout = () => {
-        axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-            .then((res) => {
-                navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
     return (
         <div>
-            <div>
-                <p><Link to="/posts/all">Home</Link> <Link to='/post/new'>New post</Link> <Link onClick={logout}>Logout</Link></p>
-            </div>
             <div>
                 <form onSubmit = {submitHandler}>
                     <div>
@@ -89,7 +82,22 @@ const EditOnePost = (props) => {
                             }
                         </div>
                         <div>
-                            <p>Need to add upload image feature later.</p>
+                        {selectedImage && (
+                            <div>
+                            <img
+                                alt="not found"
+                                width={"250px"}
+                                src={URL.createObjectURL(selectedImage)}
+                            />
+                            <br />
+                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={imgHandler}
+                        />
                         </div>
                         <div>
                             <label>Recommend this activity?</label>

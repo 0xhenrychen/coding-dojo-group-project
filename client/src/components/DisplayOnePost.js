@@ -32,31 +32,19 @@ const DisplayOnePost = (props) => {
             })
     }
 
-    const logout = () => {
-        axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-            .then((res) => {
-                navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
         return (
         <div>
             <div>
-                <div>
-                    <Link onClick = {() => deleteHandler(post._id)}>Delete</Link>
-                </div>
-            </div>
-            <div>
-                <p>Caption: {post.postCaption}</p>
-                <p>Type of activity: {post.postType}</p>
                 {
                     post.image?
-                    <img src={post.image}/>:
+                    <img src={post.image} style={{width: "250px"}}/>:
                     null
                 }
+                <p>Caption: {post.postCaption}</p>
+                <p>Type of activity: {post.postType}</p>
+            </div>
+            <div>
+                    <Link onClick = {() => deleteHandler(post._id)}>Delete</Link>
             </div>
         </div>
     );
