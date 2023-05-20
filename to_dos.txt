@@ -2,13 +2,7 @@ May 19th, 2023 @ 3PM PST (Henry)
 
 *** (1) MUST COMPLETE ***
 
-- [Henry/Jessica] Show user posts on the user profile page (http://localhost:3000/user/64653c3e696ecfb14ba308b8).
-
-- [Henry/Jessica] Show the delete button only on posts created by the logged-in user.
-
 - [Alexandra] Stylize the site.
-
-- [Henry/Jessica] Remove navigation bar on the register/login page (http://localhost:3000/).
 
 - [Henry/Jessica] Show validation error messages on the register/login page (http://localhost:3000/).
 

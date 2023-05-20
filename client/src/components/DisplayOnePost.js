@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import {useParams, Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import UserByPost from '../components/UserByPost';
+import DeleteButton from '../components/DeleteButton';
 
 const DisplayOnePost = (props) => {
     const {id} = useParams();
@@ -23,16 +24,16 @@ const DisplayOnePost = (props) => {
             })
     }, [])
 
-    const deleteHandler = (id) => {
-        axios.delete(`http://localhost:8000/api/deletepost/${id}`)
-            .then((response) => {
-                console.log(response);
-                navigate('/home');
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+    // const deleteHandler = (id) => {
+    //     axios.delete(`http://localhost:8000/api/deletepost/${id}`)
+    //         .then((response) => {
+    //             console.log(response);
+    //             navigate('/home');
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         })
+    // }
 
         return (
         <div>
@@ -50,9 +51,11 @@ const DisplayOnePost = (props) => {
                 <p>Caption: {post.postCaption}</p>
                 <p>Type of activity: {post.postType}</p>
             </div>
-            <div>
-                    <Link onClick = {() => deleteHandler(post._id)}>Delete</Link>
-            </div>
+            {
+                loaded?
+                <DeleteButton post={post} />:
+                <p>Loading delete button...</p>
+            }
         </div>
     );
 }

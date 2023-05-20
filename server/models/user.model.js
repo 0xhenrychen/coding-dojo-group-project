@@ -31,9 +31,6 @@ const UserSchema = new mongoose.Schema(
         image: {
             type: String
         },
-        posts: {
-            type: Array
-        }
     },
     {
         timestamps: true

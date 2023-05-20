@@ -114,5 +114,17 @@ module.exports = {
             .catch((err) => {
                 res.status(400).json(err)
             });
-    }
+    },
+
+    findLoggedInUser: async (req, res) => {
+        try{
+            const decodedJwt = jsonWebToken.decode(req.cookies.userToken, {complete: true});
+            const user_id = decodedJwt.payload._id;
+            const LoggedInUser = await User.findOne({_id: user_id})
+            res.status(200).json(LoggedInUser)
+        }
+        catch(err){
+            res.status(400).json(err)
+        }
+    },
 }

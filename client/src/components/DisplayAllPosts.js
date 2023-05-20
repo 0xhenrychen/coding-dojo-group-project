@@ -54,7 +54,7 @@ const DisplayAllPosts = (props) => {
                                 }
                                 <p>{post.postCaption}</p>
                                 <p>Type of activity: {post.postType}</p>
-                                <p><Link to = {`/posts/${post._id}`}>Details</Link> | <Link to = {`/posts/edit/${post._id}`}>Edit</Link></p>
+                                <p><Link to = {`/posts/${post._id}`}>Details</Link></p>
                                 <p>(Need to implement) Number of likes | Leave a comment</p>
                             </div>
                     ))
