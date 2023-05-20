@@ -25,42 +25,26 @@ const DisplayOnePost = (props) => {
         axios.delete(`http://localhost:8000/api/deletepost/${id}`)
             .then((response) => {
                 console.log(response);
-                navigate('/');
+                navigate('/home');
             })
             .catch((error) => {
                 console.log(error);
             })
     }
 
-    const logout = () => {
-        axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-            .then((res) => {
-                navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
         return (
         <div>
             <div>
-                <div>
-                    <p><Link to="/posts/all">Home</Link> <Link to='/post/new'>New post</Link> <Link onClick={logout}>Logout</Link></p>
-                </div>
-                <div>
-                    <Link onClick = {() => deleteHandler(post._id)}>Delete</Link>
-                </div>
-            </div>
-            <div>
-                <p>Caption: {post.postCaption}</p>
-                <p>Type of activity: {post.postType}</p>
-                <span>Image upload?</span>
                 {
                     post.image?
-                    <span> Yes and show photo</span>:
-                    <span> No and don't show anything</span>
+                    <img src={post.image} style={{width: "250px"}}/>:
+                    null
                 }
+                <p>Caption: {post.postCaption}</p>
+                <p>Type of activity: {post.postType}</p>
+            </div>
+            <div>
+                    <Link onClick = {() => deleteHandler(post._id)}>Delete</Link>
             </div>
         </div>
     );

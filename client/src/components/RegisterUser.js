@@ -6,13 +6,16 @@ import {useNavigate, Link} from 'react-router-dom';
 
 const RegisterUser = (props) => {
     const navigate = useNavigate()
+    const [selectedImage, setSelectedImage] = useState(null);
     
     const [user, setUser] = useState({
             firstName: "",
             lastName: "",
+            username: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            image: null
         })
 
     const [errors, setErrors] = useState({})
@@ -21,12 +24,17 @@ const RegisterUser = (props) => {
         setUser({...user, [e.target.name]: e.target.value})
     }
 
+    const imgHandler = (e) => {
+        const imgSrc = URL.createObjectURL(e.target.files[0]);
+        setUser({...user, [e.target.name]: imgSrc});
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/register', user, {withCredentials: true})
             .then((res) => {
                 console.log(res);
-                navigate('/posts/all');
+                navigate('/home');
             })
             .catch((err) => {
                 console.log(err);
@@ -58,6 +66,15 @@ const RegisterUser = (props) => {
                         }
                     </div>
                     <div>
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" name = "username" onChange = {changeHandler} value = {user.username} />
+                        {
+                            errors.username ?
+                            <p className = "text-danger">{errors.username.message}</p> :
+                            null
+                        }
+                    </div>
+                    <div>
                         <label htmlFor="email">Email:</label>
                         <input type="email" name = "email" onChange = {changeHandler} value = {user.email} />
                         {
@@ -84,6 +101,25 @@ const RegisterUser = (props) => {
                             null
                         }
                     </div>
+                <div>
+                <label htmlFor="image">Profile Picture:</label>
+                        {selectedImage && (
+                            <div>
+                            <img
+                                alt="not found"
+                                width={"250px"}
+                                src={URL.createObjectURL(selectedImage)}
+                            />
+                            <br />
+                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={imgHandler}
+                        />
+                        </div>
                     <div>
                         <input type = "submit" value = "Create Account" />
                     </div>

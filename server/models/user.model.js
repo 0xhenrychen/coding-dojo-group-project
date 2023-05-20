@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Last name is required.']
         },
+        username: {
+            type: String,
+            required: [true, 'Username is required.']
+        },
         email: {
             type: String,
             required: [true, 'Email is required.'],
@@ -27,6 +31,12 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: [ true, 'Email is required.'],
             minLength: [8, 'Password must be at least 8 characters.']
+        },
+        image: {
+            type: String
+        },
+        posts: {
+            type: Array
         }
     },
     {

@@ -1,35 +1,48 @@
-// 5/17 - Henry - Create one post function is working. Jessica is working on the React side but I wanted to include this code just in case I need it to test the backend/login and registration. We still need to do styling (Alexandra).
+// 5/17 - Henry - Edit one post function is working. Jessica is working on the React side but I wanted to include this code just in case I need it to test the backend/login and registration. We still need to do styling (Alexandra).
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {useNavigate, Link} from 'react-router-dom';
+import {useParams, Link, useNavigate} from 'react-router-dom';
 
-const CreatePost = (props) => {
+const EditOnePost = (props) => {
     const navigate = useNavigate()
+    const {id} = useParams()
     
     const [post, setPost] = useState({
-            postCaption: "",
-            postType: "",
-            postRecommend: false
-        })
+        postCaption: "",
+        postType: "",
+        postRecommend: false
+    })
 
     const [errors, setErrors] = useState({})
+    const [selectedImage, setSelectedImage] = useState(null);
     
     const changeHandler = (e) => {
-        if(e.target.name === "postRecommend") {
-            setPost({...post, postRecommend: !post.postRecommend})
-        }
-        else {
-            setPost({...post, [e.target.name]: e.target.value})
-        }
+        setPost({...post, [e.target.name]:e.target.value})
     }
+
+    const imgHandler = (e) => {
+        const imgSrc = URL.createObjectURL(e.target.files[0]);
+        setPost({...post, [e.target.name]: imgSrc});
+    }
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/onepost/${id}`)
+            .then((res) => {
+                console.log(res.data);
+                setPost(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/newpost', post)
+        axios.put(`http://localhost:8000/api/updatepost/${id}`, post)
             .then((res) => {
-                console.log(res);
-                navigate('/posts/all');
+                console.log(res); 
+                navigate('/home');
             })
             .catch((err) => {
                 console.log(err.response.data.errors);
@@ -37,21 +50,8 @@ const CreatePost = (props) => {
             })
     }
 
-    const logout = () => {
-        axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-            .then((res) => {
-                navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
     return (
         <div>
-            <div>
-                <p><Link to="/posts/all">Home</Link> <Link to='/post/new'>New post</Link> <Link onClick={logout}>Logout</Link></p>
-            </div>
             <div>
                 <form onSubmit = {submitHandler}>
                     <div>
@@ -82,7 +82,22 @@ const CreatePost = (props) => {
                             }
                         </div>
                         <div>
-                            <p>Need to add upload image feature later.</p>
+                        {selectedImage && (
+                            <div>
+                            <img
+                                alt="not found"
+                                width={"250px"}
+                                src={URL.createObjectURL(selectedImage)}
+                            />
+                            <br />
+                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={imgHandler}
+                        />
                         </div>
                         <div>
                             <label>Recommend this activity?</label>
@@ -94,7 +109,7 @@ const CreatePost = (props) => {
                             }
                         </div>
                         <div>
-                            <input type = "submit" value = "Create Post" />
+                            <input type = "submit" value = "Update Post" />
                         </div>
                     </div>
                 </form>
@@ -103,4 +118,4 @@ const CreatePost = (props) => {
     );
 }
 
-export default CreatePost;
+export default EditOnePost;

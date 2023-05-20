@@ -19,11 +19,10 @@ const PostSchema = new mongoose.Schema(
         user_id:
         {
             type: mongoose.Types.ObjectId
+        },
+        image: {
+            type: String,
         }
-        // postImage: {
-        //     type: String,
-        //     validate: [isEmail, 'Invalid email.']
-        // }
     },
     {
         timestamps: true
