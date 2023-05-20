@@ -15,7 +15,8 @@ const RegisterUser = (props) => {
             email: "",
             password: "",
             confirmPassword: "",
-            image: null
+            image: null,
+            posts: [],
         })
 
     const [errors, setErrors] = useState({})

@@ -3,6 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
+import UserByPost from '../components/UserByPost';
 
 const DisplayAllPosts = (props) => {
     const navigate = useNavigate()
@@ -45,6 +46,7 @@ const DisplayAllPosts = (props) => {
                 {
                     filteredPosts.map((post) => (
                             <div key={post._id} className="container_posts">
+                                <UserByPost user_id={post.user_id} />
                                 {
                                     post.image?
                                     <img src={post.image} style={{width: "100px"}}/>:
@@ -52,7 +54,7 @@ const DisplayAllPosts = (props) => {
                                 }
                                 <p>{post.postCaption}</p>
                                 <p>Type of activity: {post.postType}</p>
-                                <p><Link to = {`/posts/${post._id}`}>Details</Link> | <Link to = {`/posts/edit/${post._id}`}>Edit</Link></p>
+                                <p><Link to = {`/posts/${post._id}`}>Details</Link></p>
                                 <p>(Need to implement) Number of likes | Leave a comment</p>
                             </div>
                     ))

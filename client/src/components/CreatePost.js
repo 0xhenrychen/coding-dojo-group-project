@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 import axios from 'axios';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const CreatePost = (props) => {
     const navigate = useNavigate()
@@ -33,6 +33,7 @@ const CreatePost = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log(post.postCaption);
         axios.post('http://localhost:8000/api/newpost', post, {withCredentials: true})
             .then((res) => {
                 console.log(res);
@@ -50,7 +51,7 @@ const CreatePost = (props) => {
                 <form onSubmit = {submitHandler}>
                     <div>
                         <div>
-                            <label htmlFor="post-caption">Caption:</label>
+                            <label htmlFor="postCaption">Caption:</label>
                             <textarea id="post-caption" rows="5" cols="20" name = "postCaption" onChange = {changeHandler} value = {post.postCaption} />
                             {
                                 errors.postCaption ?

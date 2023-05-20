@@ -21,6 +21,7 @@ function App() {
           <Route element={<EditOnePost />} path="/posts/edit/:id"/>
           <Route element={<CreatePost />} path="/post/new"/>
           <Route element={<UserProfile />} path="/user/:id"/>
+          <Route element={<UserProfile />} path="/profile/:id"/>
           <Route element={<LoginUser />} path="/" />
           <Route element={<RegisterUser />} path="/register"/>
         </Routes>

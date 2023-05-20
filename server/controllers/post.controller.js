@@ -1,6 +1,7 @@
 // 5/15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
 
 const Post = require('../models/post.model')
+const User = require('../models/user.model')
 const jsonWebToken = require('jsonwebtoken')
 
 module.exports = {
@@ -26,19 +27,8 @@ module.exports = {
         }
     },
 
-    // ! Find all posts by a user ID. This isn't correct.
     findAllPostsByUserId: (req, res) => {
-        // try{
-        //     const decodedJwt = jsonWebToken.decode(req.cookies.userToken, {complete: true})
-        //     const user_id = decodedJwt.payload._id
-        //     const postsByLoggedInUser = await Post.find({user_id: user_id})
-        //     res.status(200).json(postsByLoggedInUser)
-        // }
-        // catch(err){
-        //     res.status(400).json(err)
-        // }
-
-        Post.findById({_id: req.params.post_id})
+        Post.find({user_id: req.params.user_id})
             .then((allPostsByUserId) => {
                 res.status(200).json(allPostsByUserId)
             })
