@@ -33,7 +33,7 @@ const CreatePost = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/newpost', post)
+        axios.post('http://localhost:8000/api/newpost', post, {withCredentials: true})
             .then((res) => {
                 console.log(res);
                 navigate('/home');

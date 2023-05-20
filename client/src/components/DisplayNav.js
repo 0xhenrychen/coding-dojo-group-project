@@ -27,7 +27,7 @@ const DisplayNav = (props) => {
         <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "darkgreen", color: "white", padding: "20px", marginBottom: "20px"}}>
             <h1>Get Out</h1>
             <p>Your next outdoor adventure awaits. Share it with your family and friends.</p>
-            <p><Link to={'/home'}>Home</Link> | <span onClick={logout}>Logout</span></p>
+            <p><Link to={'/home'}>Home</Link> | <Link to='/post/new'>New Post</Link> | <Link to='/profile'>Profile</Link> | <span onClick={logout}>Logout</span></p>
         </div>
     );
 }
