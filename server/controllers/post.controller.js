@@ -1,6 +1,7 @@
 // 5/15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
 
 const Post = require('../models/post.model')
+const User = require('../models/user.model')
 const jsonWebToken = require('jsonwebtoken')
 
 module.exports = {
