@@ -1,6 +1,7 @@
 // 5/15 - Henry - All CRUD functions for a post are working (tested them out in Postman).
 
 const Post = require('../models/post.model')
+const jsonWebToken = require('jsonwebtoken')
 
 module.exports = {
     findAllPosts: (req, res) => {
@@ -13,18 +14,55 @@ module.exports = {
         });
     },
 
-    createPost: (req, res) => {
-        Post.create(req.body)
-        .then((newPost) => {
-            res.status(200).json(newPost)
-        })
-        .catch((err) => {
+    findAllPostsByLoggedInUser: async (req, res) => {
+        try{
+            const decodedJwt = jsonWebToken.decode(req.cookies.userToken, {complete: true})
+            const user_id = decodedJwt.payload._id
+            const postsByLoggedInUser = await Post.find({user_id: user_id})
+            res.status(200).json(postsByLoggedInUser)
+        }
+        catch(err){
             res.status(400).json(err)
-        });
+        }
+    },
+
+    // ! Find all posts by a user ID. This isn't correct.
+    findAllPostsByUserId: (req, res) => {
+        // try{
+        //     const decodedJwt = jsonWebToken.decode(req.cookies.userToken, {complete: true})
+        //     const user_id = decodedJwt.payload._id
+        //     const postsByLoggedInUser = await Post.find({user_id: user_id})
+        //     res.status(200).json(postsByLoggedInUser)
+        // }
+        // catch(err){
+        //     res.status(400).json(err)
+        // }
+
+        Post.findById({_id: req.params.post_id})
+            .then((allPostsByUserId) => {
+                res.status(200).json(allPostsByUserId)
+            })
+            .catch((err) => {
+                res.status(400).json(err)
+            });
+    },
+
+    createPost: async (req, res) => {
+        try{
+            const decodedJwt = jsonWebToken.decode(req.cookies.userToken, {complete: true})
+            console.log('DECODED JWT ID:', decodedJwt.payload._id);
+            const post = {...req.body, user_id: decodedJwt.payload._id}
+            console.log('FINALIZED POST:', post)
+            const newPost = await Post.create(post);
+            res.status(201).json(newPost);
+        }
+        catch(err){
+            res.status(400).json(err)
+        }
     },
 
     findOnePost: (req, res) => {
-        Post.findOne({_id: req.params.id})
+        Post.findOne({_id: req.params.post_id})
             .then((onePost) => {
                 res.status(200).json(onePost)
             })
@@ -34,7 +72,7 @@ module.exports = {
     },
 
     updatePost: (req, res) => {
-        Post.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators: true})
+        Post.findOneAndUpdate({_id: req.params.post_id}, req.body, {new: true, runValidators: true})
             .then((updatedPost) => {
                 res.json({post: updatedPost})
             })

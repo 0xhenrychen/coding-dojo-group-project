@@ -6,6 +6,10 @@ const {isEmail} = require('validator');
 
 const UserSchema = new mongoose.Schema(
     {
+        // firstName: {
+        //     type: String,
+        //     required: [true, 'First name is required.']
+        // },
         firstName: {
             type: String,
             required: [true, 'First name is required.']
@@ -20,6 +24,7 @@ const UserSchema = new mongoose.Schema(
         },
         email: {
             type: String,
+            required: [true, 'Email is required.'],
             validate: [isEmail, 'Invalid email.']
         },
         password: {
@@ -36,7 +41,7 @@ const UserSchema = new mongoose.Schema(
     },
     {
         timestamps: true
-    });
+    })
 
 UserSchema.virtual('confirmPassword')
     .get(() => this.confirmPassword)
@@ -47,7 +52,7 @@ UserSchema.pre('validate', function(next) {
         this.invalidate('confirmPassword', `Passwords don't match.`)
     }
     next();
-});
+})
 
 UserSchema.pre('save', function(next){
     bcrypt.hash(this.password, 10)
@@ -55,6 +60,6 @@ UserSchema.pre('save', function(next){
             this.password = hash;
             next();
         });
-});
+})
 
 module.exports = mongoose.model('User', UserSchema)
