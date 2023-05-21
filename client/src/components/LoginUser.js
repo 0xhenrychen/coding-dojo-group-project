@@ -32,7 +32,7 @@ const LoginUser = (props) => {
     }
 
     return (
-        <div>
+        <div id='loginPage'>
             <form onSubmit = {submitHandler}>
                 <div>
                     <h2>Login:</h2>
