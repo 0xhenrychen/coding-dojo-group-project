@@ -1,10 +1,16 @@
-May 19th, 2023 @ 3PM PST (Henry)
+May 22nd, 2023
 
 *** (1) MUST COMPLETE ***
 
 - [Alexandra] Stylize the site.
 
-- [Henry/Jessica] Show validation error messages on the register/login page (http://localhost:3000/).
+- [Alexandra] Have each post stand out more from the other.
+
+- [Henry/Jessica] Tweak/improve the dashboard and profile pages.
+
+- [Henry/Jessica] Add/format date for each post and sort with the latest post at the top.
+
+- [Henry/Jessica] Populate user and post data for the presentation.
 
 - [Alexandra, Henry, Jessica] Record presentation video and submit final project on the Learn platform.
 
@@ -21,3 +27,5 @@ May 19th, 2023 @ 3PM PST (Henry)
 
 
 *** (3) NOT REALLY CRITICAL ***
+
+- [Henry/Jessica] Add followers and following features.

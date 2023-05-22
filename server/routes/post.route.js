@@ -1,5 +1,3 @@
-// 5/15 - Henry - All post routes are working (tested them out in Postman).
-
 const postController = require('../controllers/post.controller');
 const {authenticate} = require('../config/jwt.config');
 

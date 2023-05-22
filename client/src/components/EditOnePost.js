@@ -1,5 +1,3 @@
-// 5/17 - Henry - Edit one post function is working. Jessica is working on the React side but I wanted to include this code just in case I need it to test the backend/login and registration. We still need to do styling (Alexandra).
-
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useParams, Link, useNavigate} from 'react-router-dom';
@@ -17,9 +15,20 @@ const EditOnePost = (props) => {
     const [errors, setErrors] = useState({})
     const [selectedImage, setSelectedImage] = useState(null);
     
+    // Henry's version of changeHandler with conditional logic for the postRecommend toggle.
     const changeHandler = (e) => {
-        setPost({...post, [e.target.name]:e.target.value})
+        if(e.target.name === "postRecommend") {
+            setPost({...post, postRecommend: !post.postRecommend})
+        }
+        else {
+            setPost({...post, [e.target.name]: e.target.value})
+        }
     }
+
+    // Jessica's version of changeHandler with no conditional logic for the postRecommend toggle. Up to the team if we want to display the recommended info.
+    // const changeHandler = (e) => {
+    //     setPost({...post, [e.target.name]:e.target.value})
+    // }
 
     const imgHandler = (e) => {
         const imgSrc = URL.createObjectURL(e.target.files[0]);

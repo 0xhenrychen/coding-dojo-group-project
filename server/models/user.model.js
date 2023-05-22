@@ -1,5 +1,3 @@
-// 5/17 - Henry - User schema has been created with basic fields (first name, last name, email, and password). Confirmed everything is working with the user controller and route files.
-
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const {isEmail} = require('validator');
@@ -25,7 +23,7 @@ const UserSchema = new mongoose.Schema(
         },
         password: {
             type: String,
-            required: [ true, 'Email is required.'],
+            required: [ true, 'Password is required.'],
             minLength: [8, 'Password must be at least 8 characters.']
         },
         image: {

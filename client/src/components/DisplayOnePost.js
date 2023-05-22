@@ -1,5 +1,3 @@
-// 5/17 - Henry - Display one post function is working. Jessica is working on the React side but I wanted to include this code just in case I need it to test the backend/login and registration. We still need to do styling (Alexandra).
-
 import React, {useState, useEffect} from 'react';
 import {useParams, Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
