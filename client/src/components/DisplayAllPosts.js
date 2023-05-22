@@ -1,5 +1,3 @@
-// 5/17 - Henry - Display all posts function is working. Jessica is working on the React side but I wanted to include this code just in case I need it to test the backend/login and registration. We still need to do styling (Alexandra).
-
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
@@ -49,13 +47,20 @@ const DisplayAllPosts = (props) => {
                                 <UserByPost user_id={post.user_id} />
                                 {
                                     post.image?
-                                    <img src={post.image} style={{width: "100px"}}/>:
+                                    <img src={post.image} style={{width: "250px"}}/>:
                                     null
                                 }
+                                <p>Date: {post.createdAt}</p>
                                 <p>{post.postCaption}</p>
                                 <p>Type of activity: {post.postType}</p>
+                                <p><span>Recommend this activity? </span>
+                                {
+                                    post.postRecommend?
+                                    <span>Yes</span>:
+                                    <span>No</span>
+                                }</p>
                                 <p><Link to = {`/posts/${post._id}`}>Details</Link></p>
-                                <p>(Need to implement) Number of likes | Leave a comment</p>
+                                <p>Number of likes | Leave a comment</p>
                             </div>
                     ))
                 }

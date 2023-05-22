@@ -1,7 +1,4 @@
-// 5/17 - Henry - Functions to create a new user, log in, and log out are working (tested them out in Postman).
-
 const User = require('../models/user.model');
-// ! Still need to create this.
 const secret = process.env.SECRET_KEY;
 const jsonWebToken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');

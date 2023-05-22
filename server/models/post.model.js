@@ -1,5 +1,3 @@
-// 5/15 - Henry - Post schema has been created with just 3 basic inputs (postCaption, postType, and an optional postRecommend that I added). Still need to incorporate postImage (uploading an image) and possibly other inputs/fields.
-
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema(
@@ -7,7 +5,6 @@ const PostSchema = new mongoose.Schema(
         postCaption: {
             type: String,
             required: [true, 'Post caption is required.']
-            // minLength: [8, 'Post caption must be at least 8 characters.']
         },
         postType: {
             type: String,

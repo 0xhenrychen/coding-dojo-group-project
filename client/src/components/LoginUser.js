@@ -1,5 +1,3 @@
-// 5/17 - Henry - This is the component for an existing user to log in. Confirmed it's working. Jessica, please use as you see fit.
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -28,8 +26,9 @@ const LoginUser = (props) => {
 				navigate("/home");
 			})
 			.catch((err) => {
-				console.log(err);
-				setErrors(err.response.data.errors);
+				// console.log(err);
+                console.log(err.response.data.message);
+				setErrors(err.response.data.message);
 			});
 	};
 
@@ -50,7 +49,7 @@ const LoginUser = (props) => {
 							value={user.email}
 						/>
 						{errors.email ? (
-							<p className="text-danger">{errors.email.message}</p>
+							<p className="text-danger">{errors.response.data.message}</p>
 						) : null}
 					</div>
 					<div>
@@ -62,7 +61,7 @@ const LoginUser = (props) => {
 							value={user.password}
 						/>
 						{errors.password ? (
-							<p className="text-danger">{errors.password.message}</p>
+							<p className="text-danger">{errors.response.data.message}</p>
 						) : null}
 					</div>
 					<div>
