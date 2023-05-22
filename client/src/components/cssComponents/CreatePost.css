@@ -1,0 +1,84 @@
+.form-container {
+	max-width: 400px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 40px;
+	background-color: #e6e6e6;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: #333;
+}
+
+.form-container textarea,
+.form-container select,
+.form-container input[type="file"] {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: white;
+	font-family: Arial, sans-serif;
+}
+
+.form-container input[type="file"] {
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.form-container input[type="checkbox"] {
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.form-container input[type="submit"] {
+	margin-top: 20px;
+	background-color: #4caf50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: background-color 0.3s ease;
+}
+
+.form-container input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+.error-message {
+	color: #ff0000;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.remove-image-button {
+	display: inline-block;
+	padding: 6px 10px;
+	background-color: #ff0000;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: background-color 0.3s ease;
+}
+
+.remove-image-button:hover {
+	background-color: #e60000;
+}
+
+@media (max-width: 768px) {
+	.form-container {
+		max-width: 100%;
+		padding: 20px;
+	}
+}
