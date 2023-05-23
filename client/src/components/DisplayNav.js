@@ -45,8 +45,8 @@ const DisplayNav = (props) => {
 					friends.
 				</p>
 				<p className="nav-links">
-					<Link to={"/home"}>Home</Link> | <Link to="/post/new">New Post</Link>{" "}
-					| <Link to={`/profile/${user._id}`}>Profile</Link> |{" "}
+					<Link to={"/home"}>Home</Link>|<Link to="/post/new">New Post</Link>|
+					<Link to={`/profile/${user._id}`}>Profile</Link>|
 					<span onClick={logout}>Logout</span>
 				</p>
 			</div>

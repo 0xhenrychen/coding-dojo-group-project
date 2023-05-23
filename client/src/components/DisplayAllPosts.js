@@ -19,12 +19,18 @@ const DisplayAllPosts = (props) => {
 			.then((response) => {
 				console.log(response);
 				setAllPosts(response.data);
-				setFilteredPosts(response.data);
+                setFilteredPosts((response.data).reverse());
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}, []);
+
+    const userDisplay = {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px'
+    }
 
 
 	const filterPosts = (e) => {
@@ -37,11 +43,17 @@ const DisplayAllPosts = (props) => {
 		}
 	};
 
+    const format = (str) => {
+        const newstr = new Date(str);
+        const newdate = newstr.toDateString();
+        return newdate;
+    }
+
 	return (
 		<div>
 			<div className="posts-container">
 				<label htmlFor="filter" className="filter-label">
-					Filter Posts:
+					Filter Posts By Activity:
 				</label>
 				<select name="filter" onChange={filterPosts} className="filter-select">
 					<option value="">-- Select One --</option>
@@ -53,17 +65,24 @@ const DisplayAllPosts = (props) => {
 					<option value="Other">Other</option>
 				</select>
 				{filteredPosts.map((post) => (
-					<div key={post._id} className="container-posts">
-						<UserByPost user_id={post.user_id} />
-						{post.image ? (
-							<img src={post.image} style={{ width: "100px" }} />
-						) : null}
-						<p>{post.postCaption}</p>
-						<p>Type of activity: {post.postType}</p>
-						<p>
-							<Link to={`/posts/${post._id}`}>Details</Link>
-						</p>
-						<p>(Need to implement) Number of likes | Leave a comment</p>
+					<div key={post._id}>
+                        <div className="flex">
+                            <UserByPost user_id={post.user_id} userDisplay={userDisplay}/>
+                            <span>{format(post.createdAt)}</span>
+                        </div>
+                        <div className="container-posts">
+                            <p className="post-type">{post.postType.toUpperCase()}</p>
+                            {post.image ? (
+                                <img src={post.image}/>
+                            ) : null}
+							<p>"{post.postCaption}"</p>
+                            <div className="flex">
+                            <p>
+                                <Link to={`/posts/${post._id}`}>Post Details</Link>
+                            </p>
+                            <p>0 likes | Leave a comment</p>
+                            </div>
+                        </div>
 					</div>
 				))}
 			</div>

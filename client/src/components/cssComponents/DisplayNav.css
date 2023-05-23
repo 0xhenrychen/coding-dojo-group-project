@@ -28,8 +28,8 @@
 .nav-links a {
 	color: #333;
 	text-decoration: none;
-	margin-right: 10px;
 	transition: color 0.3s ease;
+	margin: 0 10px;
 }
 
 .nav-links a:hover {
@@ -40,6 +40,7 @@
 	color: #333;
 	cursor: pointer;
 	transition: color 0.3s ease;
+	margin: 0 10px;
 }
 
 .nav-links span:hover {

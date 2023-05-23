@@ -22,23 +22,16 @@ const DisplayOnePost = (props) => {
             })
     }, [])
 
-    // const deleteHandler = (id) => {
-    //     axios.delete(`http://localhost:8000/api/deletepost/${id}`)
-    //         .then((response) => {
-    //             console.log(response);
-    //             navigate('/home');
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // }
+    const userDisplay = {
+        marginTop: '20px'
+    }
 
         return (
         <div>
             <div>
                 {
                     loaded?
-                    <UserByPost user_id={post.user_id}/>:
+                    <UserByPost user_id={post.user_id} userDisplay={userDisplay}/>:
                     <p>Post by: Loading...</p>
                 }  
                 {
@@ -46,8 +39,8 @@ const DisplayOnePost = (props) => {
                     <img src={post.image} style={{width: "250px"}} alt={post.postCaption}/>:
                     null
                 }
-                <p>Caption: {post.postCaption}</p>
-                <p>Type of activity: {post.postType}</p>
+                <p>{post.postCaption}</p>
+                <p>{post.postType}</p>
             </div>
             {
                 loaded?

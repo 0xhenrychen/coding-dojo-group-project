@@ -14,9 +14,23 @@
 
 .user-profile p {
 	font-size: 16px;
-	margin-botstom: 10px;
+	margin-bottom: 10px;
 }
 
 .user-profile .posts-by-user {
 	margin-top: 10px;
+}
+
+.profile-top {
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	align-items: center;
+	margin: 20px auto;
+}
+
+.profile-pic {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
 }
