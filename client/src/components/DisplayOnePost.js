@@ -3,6 +3,7 @@ import {useParams, Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import UserByPost from '../components/UserByPost';
 import DeleteButton from '../components/DeleteButton';
+import LikeButton from "./LikeButton";
 
 const DisplayOnePost = (props) => {
     const {id} = useParams();
@@ -33,14 +34,17 @@ const DisplayOnePost = (props) => {
                     loaded?
                     <UserByPost user_id={post.user_id} userDisplay={userDisplay}/>:
                     <p>Post by: Loading...</p>
-                }  
+                }
                 {
                     post.image?
                     <img src={post.image} style={{width: "250px"}} alt={post.postCaption}/>:
                     null
                 }
                 <p>{post.postCaption}</p>
-                <p>{post.postType}</p>
+                <p>Type of activity: {post.postType}</p>
+            </div>
+            <div>
+                <LikeButton />
             </div>
             {
                 loaded?

@@ -4,12 +4,6 @@ May 22nd, 2023
 
 - [Alexandra] Stylize the site.
 
-- [Alexandra] Have each post stand out more from the other.
-
-- [Henry/Jessica] Tweak/improve the dashboard and profile pages.
-
-- [Henry/Jessica] Add/format date for each post and sort with the latest post at the top.
-
 - [Henry/Jessica] Populate user and post data for the presentation.
 
 - [Alexandra, Henry, Jessica] Record presentation video and submit final project on the Learn platform.

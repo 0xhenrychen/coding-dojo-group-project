@@ -50,7 +50,7 @@ const LoginUser = (props) => {
 							className="login-input"
 						/>
 						{errors.email ? (
-							<p className="text-danger">{errors.response.data.message}</p>
+							<p className="text-danger">{errors}</p>
 						) : null}
 					</div>
 					<div>
@@ -62,8 +62,8 @@ const LoginUser = (props) => {
 							value={user.password}
 							className="login-input"
 						/>
-						{errors.password ? (
-							<p className="text-danger">{errors.response.data.message}</p>
+						{errors?.password ? (
+							<p className="text-danger">{errors}</p>
 						) : null}
 					</div>
 					<div>
