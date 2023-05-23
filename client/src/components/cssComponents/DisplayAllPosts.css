@@ -1,0 +1,67 @@
+.posts-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.filter-label {
+	display: block;
+	margin-top: 50px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+}
+
+.filter-select {
+	width: 200px;
+	margin-bottom: 50px;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.container_posts {
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+}
+
+.container_posts img {
+	width: 100px;
+	margin-bottom: 10px;
+}
+
+.container_posts p {
+	margin-bottom: 5px;
+}
+
+.container_posts a {
+	color: #333;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.container_posts a:hover {
+	text-decoration: underline;
+}
+
+.create-post-link {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #89bf96;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+
+.create-post-link:hover {
+	background-color: #b5d3b6;
+}

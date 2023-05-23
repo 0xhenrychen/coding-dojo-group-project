@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import PostsByUser from "../components/PostsByUser";
+import "./cssComponents/UserProfile.css";
 
 const UserProfile = (props) => {
 	const { id } = useParams();

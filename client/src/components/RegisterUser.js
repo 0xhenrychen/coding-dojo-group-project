@@ -53,7 +53,7 @@ const RegisterUser = (props) => {
 				<img className="logo" src="/get-out-logo.png" alt="App Logo" />
 			</div>
 			<form onSubmit={submitHandler}>
-				<div className="container">
+				<div className="register-container">
 					<h2>Register:</h2>
 					<div>
 						<label htmlFor="firstName">First Name:</label>
@@ -62,6 +62,7 @@ const RegisterUser = (props) => {
 							name="firstName"
 							onChange={changeHandler}
 							value={user.firstName}
+							className="register-input"
 						/>
 						{errors.firstName ? (
 							<p className="text-danger">{errors.firstName.message}</p>
@@ -74,6 +75,7 @@ const RegisterUser = (props) => {
 							name="lastName"
 							onChange={changeHandler}
 							value={user.lastName}
+							className="register-input"
 						/>
 						{errors.lastName ? (
 							<p className="text-danger">{errors.lastName.message}</p>
@@ -86,6 +88,7 @@ const RegisterUser = (props) => {
 							name="username"
 							onChange={changeHandler}
 							value={user.username}
+							className="register-input"
 						/>
 						{errors.username ? (
 							<p className="text-danger">{errors.username.message}</p>
@@ -98,6 +101,7 @@ const RegisterUser = (props) => {
 							name="email"
 							onChange={changeHandler}
 							value={user.email}
+							className="register-input"
 						/>
 						{errors.email ? (
 							<p className="text-danger">{errors.email.message}</p>
@@ -110,6 +114,7 @@ const RegisterUser = (props) => {
 							name="password"
 							onChange={changeHandler}
 							value={user.password}
+							className="register-input"
 						/>
 						{errors.password ? (
 							<p className="text-danger">{errors.password.message}</p>
@@ -122,6 +127,7 @@ const RegisterUser = (props) => {
 							name="confirmPassword"
 							onChange={changeHandler}
 							value={user.confirmPassword}
+							className="register-input"
 						/>
 						{errors.confirmPassword ? (
 							<p className="text-danger">{errors.confirmPassword.message}</p>
@@ -140,16 +146,32 @@ const RegisterUser = (props) => {
 								<button onClick={() => setSelectedImage(null)}>Remove</button>
 							</div>
 						)}
-						<input type="file" name="image" onChange={imgHandler} />
+						<input
+							type="file"
+							name="image"
+							onChange={imgHandler}
+							className="register-input"
+						/>
 					</div>
 					<div>
-						<input type="submit" value="Create Account" />
+						<input
+							type="submit"
+							value="Create Account"
+							className="register-btn"
+						/>
 					</div>
 				</div>
 			</form>
-			<p>
+			<p className="login-link">
 				Already have an account? <Link to={"/"}>Log in</Link>
 			</p>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+				<path
+					fill="#00cba9"
+					fill-opacity="1"
+					d="M0,192L205.7,256L411.4,96L617.1,224L822.9,128L1028.6,256L1234.3,224L1440,128L1440,320L1234.3,320L1028.6,320L822.9,320L617.1,320L411.4,320L205.7,320L0,320Z"
+				></path>
+			</svg>
 		</div>
 	);
 };
