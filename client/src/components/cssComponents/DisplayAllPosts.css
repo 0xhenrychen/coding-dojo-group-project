@@ -2,6 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	height: 70vh;
+	overflow: auto;
+	margin: 15px auto;
 }
 
 .filter-label {
@@ -27,13 +30,18 @@
 .container-posts {
 	margin-bottom: 20px;
 	padding: 20px;
+	padding-top: 5px;
 	background-color: #f2f2f2;
 	border-radius: 5px;
+	width: 40vw;
 }
 
 .container-posts img {
-	width: 100px;
+	width: 90%;
+	height: 90%;
+	object-fit: cover;
 	margin-bottom: 10px;
+	margin-top: 15px;
 }
 
 .container-posts p {
@@ -64,4 +72,17 @@
 
 .create-post-link:hover {
 	background-color: #b5d3b6;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+
+.post-type {
+	text-align: right;
+	font-size: small;
+	color: #8cba97;
 }
