@@ -24,29 +24,29 @@
 	background-color: #f2f2f2;
 }
 
-.container_posts {
+.container-posts {
 	margin-bottom: 20px;
 	padding: 20px;
 	background-color: #f2f2f2;
 	border-radius: 5px;
 }
 
-.container_posts img {
+.container-posts img {
 	width: 100px;
 	margin-bottom: 10px;
 }
 
-.container_posts p {
+.container-posts p {
 	margin-bottom: 5px;
 }
 
-.container_posts a {
+.container-posts a {
 	color: #333;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-.container_posts a:hover {
+.container-posts a:hover {
 	text-decoration: underline;
 }
 

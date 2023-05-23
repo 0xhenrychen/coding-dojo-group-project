@@ -50,7 +50,7 @@ const DisplayAllPosts = (props) => {
 					<option value="Other">Other</option>
 				</select>
 				{filteredPosts.map((post) => (
-					<div key={post._id} className="container_posts">
+					<div key={post._id} className="container-posts">
 						<UserByPost user_id={post.user_id} />
 						{post.image ? (
 							<img src={post.image} style={{ width: "100px" }} />
