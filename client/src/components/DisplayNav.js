@@ -1,5 +1,3 @@
-// 5/17 - Henry - Added a navigation component to show up at the top of every other component, i.e. "page". Jessica is working on the React side but I wanted to include this code just in case I need it to test the backend/login and registration. We still need to do styling (Alexandra).
-
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import axios from "axios";

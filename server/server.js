@@ -1,7 +1,3 @@
-// 5/17 - Henry - Updated this file to include dependencies for login and registration.
-
-// 5/15 - Henry - server.js file has been modified and successfully ran (nodemon server.js).
-
 const express = require('express');
 const app = express();
 const cors = require('cors');

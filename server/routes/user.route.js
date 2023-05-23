@@ -1,5 +1,3 @@
-// 5/17 - Henry - All login and registration routes are working (tested them out in Postman).
-
 const userController = require('../controllers/user.controller');
 
 module.exports = (app) => {

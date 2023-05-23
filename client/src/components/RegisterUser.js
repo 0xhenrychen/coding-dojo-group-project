@@ -1,5 +1,3 @@
-// 5/17 - Henry - This is the component for a new user to register. Confirmed it's working. Jessica, please use as you see fit.
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -43,7 +41,7 @@ const RegisterUser = (props) => {
 			})
 			.catch((err) => {
 				console.log(err);
-				setErrors(err.response.data.errors);
+				setErrors(err.response.data.error.errors);
 			});
 	};
 
@@ -64,7 +62,7 @@ const RegisterUser = (props) => {
 							value={user.firstName}
 							className="register-input"
 						/>
-						{errors.firstName ? (
+						{errors?.firstName ? (
 							<p className="text-danger">{errors.firstName.message}</p>
 						) : null}
 					</div>
@@ -77,7 +75,7 @@ const RegisterUser = (props) => {
 							value={user.lastName}
 							className="register-input"
 						/>
-						{errors.lastName ? (
+						{errors?.lastName ? (
 							<p className="text-danger">{errors.lastName.message}</p>
 						) : null}
 					</div>
@@ -90,7 +88,7 @@ const RegisterUser = (props) => {
 							value={user.username}
 							className="register-input"
 						/>
-						{errors.username ? (
+						{errors?.username ? (
 							<p className="text-danger">{errors.username.message}</p>
 						) : null}
 					</div>
@@ -103,7 +101,7 @@ const RegisterUser = (props) => {
 							value={user.email}
 							className="register-input"
 						/>
-						{errors.email ? (
+						{errors?.email ? (
 							<p className="text-danger">{errors.email.message}</p>
 						) : null}
 					</div>
@@ -116,7 +114,7 @@ const RegisterUser = (props) => {
 							value={user.password}
 							className="register-input"
 						/>
-						{errors.password ? (
+						{errors?.password ? (
 							<p className="text-danger">{errors.password.message}</p>
 						) : null}
 					</div>
@@ -129,7 +127,7 @@ const RegisterUser = (props) => {
 							value={user.confirmPassword}
 							className="register-input"
 						/>
-						{errors.confirmPassword ? (
+						{errors?.confirmPassword ? (
 							<p className="text-danger">{errors.confirmPassword.message}</p>
 						) : null}
 					</div>
