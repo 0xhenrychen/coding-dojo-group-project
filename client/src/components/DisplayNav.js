@@ -36,19 +36,20 @@ const DisplayNav = (props) => {
 	}
 
 	return (
-		<div className="navbar-container">
-			<div className="logo-container">
-				<img className="logo" src="/get-out-logo.png" alt="App Logo" />
+		<div>
+			<div className="nav-container">
+				<img className="nav-logo" src="/get-out-logo.png" alt="App Logo" />
+
+				<p className="nav-text">
+					Your next outdoor adventure awaits. Share it with your family and
+					friends.
+				</p>
+				<p className="nav-links">
+					<Link to={"/home"}>Home</Link> | <Link to="/post/new">New Post</Link>{" "}
+					| <Link to={`/profile/${user._id}`}>Profile</Link> |{" "}
+					<span onClick={logout}>Logout</span>
+				</p>
 			</div>
-			<p>
-				Your next outdoor adventure awaits. Share it with your family and
-				friends.
-			</p>
-			<p>
-				<Link to={"/home"}>Home</Link> | <Link to="/post/new">New Post</Link> |{" "}
-				<Link to={`/profile/${user._id}`}>Profile</Link> |{" "}
-				<span onClick={logout}>Logout</span>
-			</p>
 		</div>
 	);
 };
