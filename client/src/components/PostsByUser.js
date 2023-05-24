@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const PostsByUser = (props) => {
     const [user_id, setUser_id] = useState(props.user_id);
@@ -17,16 +18,15 @@ const PostsByUser = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className='user-posts'>
             {
                 posts.map((post) => (
                     <div key={post._id}>
                         {
                             post.image?
-                            <img src={post.image} style={{width: "100px"}} alt={post.postCaption}/>:
-                            null
+                            <Link to={`/posts/${post._id}`}><img src={post.image} alt={post.postCaption}/></Link>:
+                            <Link to={`/posts/${post._id}`}><div className='no-image-container'><p className='post-link'>{post.postCaption}</p></div></Link>
                         }
-                        <p>{post.postCaption}</p>
                         </div>
                 ))
             }

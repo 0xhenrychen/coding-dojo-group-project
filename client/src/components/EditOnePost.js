@@ -61,7 +61,7 @@ const EditOnePost = (props) => {
 
     return (
         <div>
-            <div>
+            <div className="create-post-container">
                 <form onSubmit = {submitHandler}>
                     <div>
                         <div>
