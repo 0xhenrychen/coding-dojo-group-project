@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import PostsByUser from "../components/PostsByUser";
 import "./cssComponents/UserProfile.css";
-import blank from '../blank-profile.jpg';
+import blank from "../blank-profile.jpg";
 
 const UserProfile = (props) => {
 	const { id } = useParams();
@@ -24,7 +24,7 @@ const UserProfile = (props) => {
 	}, []);
 
 	return (
-		<div>
+		<div className="profile-container">
 			<div className="profile-top">
 				<div>
 					{user.image ? (
@@ -34,13 +34,15 @@ const UserProfile = (props) => {
 					)}
 				</div>
 				<div>
-					<p><strong>{user.username}'s Profile</strong></p>
+					<p>
+						<strong>{user.username}'s Profile</strong>
+					</p>
 					<p>2 Posts</p>
 					<p>8 Followers</p>
 					<p>25 Following</p>
 				</div>
 			</div>
-				{loaded ? <PostsByUser user_id={user._id} /> : null}
+			{loaded ? <PostsByUser user_id={user._id} /> : null}
 		</div>
 	);
 };

@@ -1,0 +1,9 @@
+.display-container {
+	max-width: 400px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 40px;
+	background-color: #e6e6e6;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
