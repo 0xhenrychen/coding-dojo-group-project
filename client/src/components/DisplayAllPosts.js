@@ -5,7 +5,6 @@ import UserByPost from "../components/UserByPost";
 import "./cssComponents/DisplayAllPosts.css";
 import LikeButton from "./LikeButton";
 
-
 const DisplayAllPosts = (props) => {
 	const navigate = useNavigate();
 	const [allPosts, setAllPosts] = useState([]);
@@ -17,19 +16,18 @@ const DisplayAllPosts = (props) => {
 			.then((response) => {
 				console.log(response);
 				setAllPosts(response.data);
-                setFilteredPosts((response.data).reverse());
+				setFilteredPosts(response.data.reverse());
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}, []);
 
-    const userDisplay = {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px'
-    }
-
+	const userDisplay = {
+		display: "flex",
+		alignItems: "center",
+		gap: "10px",
+	};
 
 	const filterPosts = (e) => {
 		if (e.target.value === "") {
@@ -41,11 +39,11 @@ const DisplayAllPosts = (props) => {
 		}
 	};
 
-    const format = (str) => {
-        const newstr = new Date(str);
-        const newdate = newstr.toDateString();
-        return newdate;
-    }
+	const format = (str) => {
+		const newstr = new Date(str);
+		const newdate = newstr.toDateString();
+		return newdate;
+	};
 
 	return (
 		<div>
@@ -64,23 +62,23 @@ const DisplayAllPosts = (props) => {
 				</select>
 				{filteredPosts.map((post) => (
 					<div key={post._id}>
-                        <div className="flex">
-                            <UserByPost user_id={post.user_id} userDisplay={userDisplay}/>
-                            <span>{format(post.createdAt)}</span>
-                        </div>
-                        <div className="container-posts">
-                            <p className="post-type">{post.postType.toUpperCase()}</p>
-                            {post.image ? (
-                                <img src={post.image}/>
-                            ) : null}
-							<p>"{post.postCaption}"</p>
-                            <div className="flex">
-                            <p>
-                                <Link to={`/posts/${post._id}`}>Post Details</Link>
-                            </p>
-                            <p><LikeButton /> Leave a comment</p>
-                            </div>
-                        </div>
+						<div className="flex">
+							<UserByPost user_id={post.user_id} userDisplay={userDisplay} />
+							<span>{format(post.createdAt)}</span>
+						</div>
+						<div className="container-posts">
+							<p className="post-type">{post.postType.toUpperCase()}</p>
+							{post.image ? <img src={post.image} /> : null}
+							<p className="post-caption">"{post.postCaption}"</p>
+							<div className="flex">
+								<p className="post-details-link">
+									<Link to={`/posts/${post._id}`}>Post Details</Link>
+								</p>
+								<p>
+									<LikeButton />
+								</p>
+							</div>
+						</div>
 					</div>
 				))}
 			</div>

@@ -1,3 +1,12 @@
+.profile-container {
+	padding-top: 1px;
+	box-sizing: border-box;
+	height: 100vh;
+	background: #f7f7f7;
+	background: -webkit-linear-gradient(173deg, #f7f7f7 0%, #e6d4b5 100%);
+	background: linear-gradient(173deg, #f7f7f7 0%, #e6d4b5 100%);
+}
+
 .user-profile {
 	display: flex;
 	flex-direction: column;
@@ -32,5 +41,6 @@
 .profile-pic {
 	width: 150px;
 	height: 150px;
+	border-radius: 50%;
 	object-fit: cover;
 }

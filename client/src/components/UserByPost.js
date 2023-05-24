@@ -23,11 +23,11 @@ const UserByPost = (props) => {
 
 	return (
 		<div style={userDisplay}>
-				{
-					user.image?
-					<img src={user.image}/>:
-					<img src={blank} className="profile-icon"/>
-				}
+			{user.image ? (
+				<img src={user.image} className="user-icon" />
+			) : (
+				<img src={blank} className="profile-icon" />
+			)}
 			<p>
 				<Link to={`/user/${user._id}`}>{user.username}</Link>
 			</p>

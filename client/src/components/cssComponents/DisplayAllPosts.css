@@ -84,5 +84,10 @@
 .post-type {
 	text-align: right;
 	font-size: small;
-	color: #8cba97;
+	font-weight: bold;
+	color: #769a7e;
+}
+
+.post-caption {
+	margin-top: 5px;
 }
