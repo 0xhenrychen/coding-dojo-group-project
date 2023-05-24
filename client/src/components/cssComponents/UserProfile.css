@@ -44,3 +44,44 @@
 	border-radius: 50%;
 	object-fit: cover;
 }
+
+.user-posts {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.user-posts img {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	transition: transform .3s;
+	background-color: #e6e6e6;
+}
+
+.user-posts img:hover, .no-image-container:hover {
+	transform: scale(1.2);
+}
+
+.no-image-container {
+	text-overflow: ellipsis ellipsis;
+	overflow: hidden;
+	width: 150px;
+	height: 150px;
+	transition: transform .3s;
+	background-image: url('/public/Untitled design.png');
+	background-size: cover;
+}
+
+.post-link {
+	text-decoration: none;
+	color: white;
+	font-size: large;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px #000000;
+}
+
+a {
+	text-decoration: none;
+}

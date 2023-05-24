@@ -42,6 +42,7 @@ const UserProfile = (props) => {
 					<p>25 Following</p>
 				</div>
 			</div>
+			<h2>All {user.username}'s Posts</h2>
 			{loaded ? <PostsByUser user_id={user._id} /> : null}
 		</div>
 	);
